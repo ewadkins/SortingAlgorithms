@@ -17,6 +17,7 @@
 #include "InsertionSort.h"
 #include "SelectionSort.h"
 #include "MergeSort.h"
+#include "VontellSort.h"
 
 class main {
 public:
@@ -26,6 +27,8 @@ public:
 	static std::vector<T> randomVector(int size, T min, T max);
 	template<typename T>
 	static std::vector<T> shuffledVector(int size, T min, T max);
+	template<typename T>
+	static std::vector<T> sortedVector(int size, T min, T max);
 };
 
 #endif /* MAIN_H_ */

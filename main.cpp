@@ -10,15 +10,25 @@
 int main() {
 	srand(clock());
 
-	/*float arr[] = { -22680, 6966, 25209, -7884, -2521, 934, -9, -16, 1 };
-	std::vector<float> x(arr, arr + sizeof(arr) / sizeof(arr[0]));*/
+	//float arr[] = { 4, 7.5, 1, 6, 5, 8, 3.2 };
+	//std::vector<float> x(arr, arr + sizeof(arr) / sizeof(arr[0]));
 
-	std::vector<float> x = main::randomVector<float>(50000, 0, 1000000);
-	//std::vector<float> x = main::shuffledVector<float>(30000, 0, 1);
+	//std::vector<float> x = main::shuffledVector<float>(22, -5, 5.5);
+	std::vector<float> x = main::randomVector<float>(99999, 0, 1000000);
+	//std::vector<float> x = main::shuffledVector<float>(30000, 0, 1000000);
+	//std::vector<float> x = main::sortedVector<float>(30000, 0, 1000000);
+
+	/*std::cout << '[';
+	for (int i = 0; i < x.size(); i++) {
+		std::cout << " " << x[i] << (i == x.size() - 1 ? " " : ", ");
+	}
+	std::cout << ']' << std::endl;*/
 
 	main::run<InsertionSort>(x, false);
 	main::run<SelectionSort>(x, false);
 	main::run<MergeSort>(x, false);
+	main::run<VontellSort>(x, false);
+
 }
 
 template<typename T, typename S>
@@ -71,5 +81,20 @@ std::vector<T> main::shuffledVector(int size, T min, T max) {
 		//std::cout << i << std::endl;
 	}
 	std::random_shuffle (vector.begin(), vector.end());
+	return vector;
+}
+
+template<typename T>
+std::vector<T> main::sortedVector(int size, T min, T max) {
+	std::cout << "Creating sorted vector with " << size << " values ranging from " << min << " to " << max << std::endl;
+	std::vector<T> vector(size);
+	bool floor = false;
+	if ((T) 0.5 == (T) 0) {
+		floor = true;
+	}
+	for (int i = 0; i < size; i++) {
+		vector[i] = ((T)((float) i / (size - 1) * ((floor ? max + 1 - std::numeric_limits<float>::min() : max) - min) + min));
+		//std::cout << i << std::endl;
+	}
 	return vector;
 }

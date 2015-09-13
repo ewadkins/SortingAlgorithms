@@ -9,11 +9,14 @@
 
 template<typename T>
 std::vector<T> InsertionSort::sort(std::vector<T> x) {
+	T temp;
 	for (int i = 1; i < x.size(); i++) {
-		for (int j = i; j > 0 && x[j - 1] > x[j]; j--) {
-			T temp = x[j - 1];
-			x[j - 1] = x[j];
-			x[j] = temp;
+		for (int j = i; j > 0; j--) {
+			if (x[j - 1] > x[j]) {
+				temp = x[j - 1];
+				x[j - 1] = x[j];
+				x[j] = temp;
+			}
 		}
 	}
 

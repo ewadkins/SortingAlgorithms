@@ -9,15 +9,20 @@
 
 template<typename T>
 std::vector<T> SelectionSort::sort(std::vector<T> x) {
+	if (x.size() == 0) {
+		return x;
+	}
+	T temp;
+	int min;
 	for (int i = 0; i < x.size() - 1; i++) {
-		int min = i;
+		min = i;
 		for (int j = i + 1; j < x.size(); j++) {
 			if (x[j] < x[min]) {
 				min = j;
 			}
 		}
 		if (min != i) {
-			T temp = x[i];
+			temp = x[i];
 			x[i] = x[min];
 			x[min] = temp;
 		}
