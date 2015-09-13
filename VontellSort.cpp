@@ -19,25 +19,14 @@ std::vector<T> VontellSort::sort(std::vector<T> x) {
 			min = x[i];
 		}
 	}
-	if (min < 0 && (int) min != min) {
-		min = (int) (min - 1);
-	}
-	else {
-		min = (int) min;
-	}
-	if (max < 0 && (int) max != max) {
-		max = (int) (max - 1);
-	}
-	else {
-		max = (int) max;
-	}
+	min = (min < 0 && (int) min != min ? (int) (min - 1) : (int) min);
+	max = (max < 0 && (int) max != max ? (int) (max - 1) : (int) max);
 	std::vector<std::vector<T> > temp(max - min + 1);
 
 	for (int i = 0; i < x.size(); i++) {
 		int index = (x[i] < 0 && (int) x[i] != x[i] ? (int) (x[i] - min) : (int) (x[i] - min));
 		temp[index].push_back(x[i]);
 	}
-
 	std::vector<T> result(x.size());
 	int count = 0;
 	for (int i = 0; i < temp.size(); i++) {
@@ -47,17 +36,6 @@ std::vector<T> VontellSort::sort(std::vector<T> x) {
 		}
 		count += temp[i].size();
 	}
-
-	/*std::cout << std::endl << "[ ";
-	for (int i = 0; i < temp.size(); i++) {
-		std::cout << i << ":" << "[";
-		for (int j = 0; j < temp[i].size(); j++) {
-			std::cout << " " << temp[i][j] << (j == temp[i].size() - 1 ? " " : ", ");
-		}
-		std::cout << "]" << (i == temp.size() - 1 ? " " : ", ");
-	}
-	std::cout << "]" << std::endl;*/
-
 	return result;
 }
 

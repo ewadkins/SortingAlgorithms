@@ -14,7 +14,7 @@ int main() {
 	//std::vector<float> x(arr, arr + sizeof(arr) / sizeof(arr[0]));
 
 	//std::vector<float> x = main::shuffledVector<float>(22, -5, 5.5);
-	std::vector<float> x = main::randomVector<float>(99999, 0, 1000000);
+	std::vector<float> x = main::randomVector<float>(1000000, 0, 1000000);
 	//std::vector<float> x = main::shuffledVector<float>(30000, 0, 1000000);
 	//std::vector<float> x = main::sortedVector<float>(30000, 0, 1000000);
 
@@ -24,8 +24,8 @@ int main() {
 	}
 	std::cout << ']' << std::endl;*/
 
-	main::run<InsertionSort>(x, false);
-	main::run<SelectionSort>(x, false);
+	//main::run<InsertionSort>(x, false);
+	//main::run<SelectionSort>(x, false);
 	main::run<MergeSort>(x, false);
 	main::run<VontellSort>(x, false);
 
