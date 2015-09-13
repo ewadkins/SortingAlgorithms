@@ -13,11 +13,12 @@ int main() {
 	/*float arr[] = { -22680, 6966, 25209, -7884, -2521, 934, -9, -16, 1 };
 	std::vector<float> x(arr, arr + sizeof(arr) / sizeof(arr[0]));*/
 
-	std::vector<float> x = main::randomVector<float>(30000, 0, 1000000);
+	std::vector<float> x = main::randomVector<float>(50000, 0, 1000000);
 	//std::vector<float> x = main::shuffledVector<float>(30000, 0, 1);
 
 	main::run<InsertionSort>(x, false);
 	main::run<SelectionSort>(x, false);
+	main::run<MergeSort>(x, false);
 }
 
 template<typename T, typename S>

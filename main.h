@@ -16,6 +16,7 @@
 
 #include "InsertionSort.h"
 #include "SelectionSort.h"
+#include "MergeSort.h"
 
 class main {
 public:
