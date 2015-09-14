@@ -9,6 +9,9 @@
 
 template<typename T>
 std::vector<T> VontellSort::sort(std::vector<T> x) {
+	if (x.size() <= 1) {
+		return x;
+	}
 	T min = std::numeric_limits<T>::max();
 	T max = std::numeric_limits<T>::min();
 	for (int i = 0; i < x.size(); i++) {
@@ -22,10 +25,8 @@ std::vector<T> VontellSort::sort(std::vector<T> x) {
 	min = (min < 0 && (int) min != min ? (int) (min - 1) : (int) min);
 	max = (max < 0 && (int) max != max ? (int) (max - 1) : (int) max);
 	std::vector<std::vector<T> > temp(max - min + 1);
-
 	for (int i = 0; i < x.size(); i++) {
-		int index = (x[i] < 0 && (int) x[i] != x[i] ? (int) (x[i] - min) : (int) (x[i] - min));
-		temp[index].push_back(x[i]);
+		temp[(int) (x[i] - min)].push_back(x[i]);
 	}
 	std::vector<T> result(x.size());
 	int count = 0;
